@@ -57,7 +57,7 @@ public class TicTacToe {
                 boardPanel.add(tile);
 
                 //tile properties
-                tile.setBackground(Color.gray);
+                tile.setBackground(Color.darkGray);
             }
 
         }

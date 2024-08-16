@@ -75,11 +75,11 @@ public class TicTacToe {
                         JButton tile = (JButton) e.getSource();
                         
                         if (tile.getText() == "") { //check if button is empty, only then be able to place text                           
-                        tile.setText(currentPlayer);
-                        checkWinner();
-                        if (!gameOver) {
-                        currentPlayer = currentPlayer == playerX ? playerO : playerX;
-                        textLabel.setText(currentPlayer + "'s turn.");
+                            tile.setText(currentPlayer);
+                            checkWinner();
+                            if (!gameOver) {
+                                currentPlayer = currentPlayer == playerX ? playerO : playerX;
+                                textLabel.setText(currentPlayer + "'s turn.");
                             }
                         }
 
@@ -94,23 +94,30 @@ public class TicTacToe {
 
     }
 
-void checkWinner() {
-    //horizontal
-    for(int r = 0; r<3; r++) {
-        if (board[r][0].getText() == "") {
-            continue;
+    void checkWinner() {
+        //horizontal
+        for(int r = 0; r<3; r++) {
+            if (board[r][0].getText() == "") {
+                continue;
+            }
+            if(board[r][0].getText() == board[r][1].getText() && board[r][1].getText() == board[r][2].getText()) {
+                for(int i=0; i<3; i++) {
+                    setWinner(board[r][i]);
+                }
+                gameOver = true;
+                return;
+            }
+
         }
-        if(board[r][0].getText() == board[r][1].getText() && board[r][1].getText() == board[r][2].getText()) {
-            gameOver = true;
-            return;
-        }
-        if() {
-            
-        }
-        if() {
-            
-        }
+        
+        
     }
-}
+    void setWinner(JButton tile) {
+        tile.setForeground(Color.green);
+        tile.setBackground(Color.gray);
+        textLabel.setText(currentPlayer + " is the winner!");
+
+    }
+    
 
 }

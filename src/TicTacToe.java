@@ -122,6 +122,18 @@ public class TicTacToe {
                 return;
             }
         }
+        //diagonally
+
+        if(board[0][0].getText() == board[1][1].getText() &&
+            board[1][1].getText() == board[2][2].getText() &&
+            board[0][0].getText() != "") {
+            for(int i=0; i<3; i++) {
+                setWinner(board[i][i]);
+            }
+            gameOver = true;
+            return;
+        }
+        
         
     }
     void setWinner(JButton tile) {

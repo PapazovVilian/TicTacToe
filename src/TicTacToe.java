@@ -133,6 +133,18 @@ public class TicTacToe {
             gameOver = true;
             return;
         }
+        //anti-diagonally
+
+        if(board[0][2].getText() == board[1][1].getText() &&
+            board[1][1].getText() == board[2][0].getText() &&
+            board[0][2].getText() != "") {
+            setWinner(board[0][2]);
+            setWinner(board[1][1]);
+            setWinner(board[2][0]);
+            
+            gameOver = true;
+            return;
+        }
         
         
     }

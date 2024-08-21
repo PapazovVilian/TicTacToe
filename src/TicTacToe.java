@@ -23,6 +23,8 @@ public class TicTacToe {
 
     boolean gameOver = false;
 
+    int turns = 0;  //listen for tie
+
 
     TicTacToe() {
 
@@ -76,6 +78,7 @@ public class TicTacToe {
                         
                         if (tile.getText() == "") { //check if button is empty, only then be able to place text                           
                             tile.setText(currentPlayer);
+                            turns++;    //increment for tie
                             checkWinner();
                             if (!gameOver) {
                                 currentPlayer = currentPlayer == playerX ? playerO : playerX;
@@ -145,6 +148,15 @@ public class TicTacToe {
             gameOver = true;
             return;
         }
+
+        if (turns == 9) {
+            for (int r=0;r<3;r++) {
+                for (int c=0;c<3;c++) {
+                    setTie(board[r][c]);
+                } 
+            }
+            gameOver = true;
+        }
         
         
     }
@@ -155,5 +167,11 @@ public class TicTacToe {
 
     }
     
+    void setTie (JButton tile) {
+        tile.setForeground(Color.orange);
+        tile.setBackground(Color.gray);
+        textLabel.setText("Tie!");
+
+    }
 
 }
